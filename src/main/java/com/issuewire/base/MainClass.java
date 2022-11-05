@@ -8,6 +8,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -19,6 +20,7 @@ public class MainClass {
 
 	Properties prop;
 	WebDriver driver;
+	WebElement element;
 	
 	//Method For Pull The Configuration File
 	@BeforeTest
@@ -77,7 +79,8 @@ public class MainClass {
 			
 		
 	}
-	
+
+
 	
 	
 	
