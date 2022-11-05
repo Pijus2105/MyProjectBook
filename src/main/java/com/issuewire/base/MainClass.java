@@ -69,16 +69,19 @@ public class MainClass {
 			driver = new InternetExplorerDriver();
 		}
 		
-		driver.manage().window().fullscreen();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Integer.parseInt(prop.getProperty("implicitwait")), TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(prop.getProperty("implicitwait")), TimeUnit.SECONDS);
-		
-		driver.get(prop.getProperty("URL"));
+//		driver.manage().window().fullscreen();
+//		driver.manage().deleteAllCookies();
+//		driver.manage().timeouts().implicitlyWait(Integer.parseInt(prop.getProperty("implicitwait")), TimeUnit.SECONDS);
+//		driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(prop.getProperty("implicitwait")), TimeUnit.SECONDS);
+//		
+//		driver.get(prop.getProperty("URL"));
 	
 			
 		
+		
+		
 	}
+
 
 
 	
