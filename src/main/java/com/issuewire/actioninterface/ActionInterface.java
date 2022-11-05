@@ -9,5 +9,5 @@ public interface ActionInterface {
 	public void scrollbyElement(WebDriver driver, WebElement element);
 	public void click(WebDriver driver, WebElement element);
 	public boolean findElement(WebDriver driver, WebElement element);
-	public boolean isSelected(WebDriver driver, WebElement element)
+	public boolean isSelected(WebDriver driver, WebElement element);
 }
