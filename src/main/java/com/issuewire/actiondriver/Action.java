@@ -1,5 +1,7 @@
 package com.issuewire.actiondriver;
 
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -411,4 +413,179 @@ public class Action extends MainClass implements ActionInterface  {
 			}
 		}
 	}
+	
+	
+	
+	public void mouseOverElement(WebDriver driver,WebElement element) {
+		boolean flagmouseOver = false;
+		try {
+			new Actions(driver).moveToElement(element).build().perform();
+			flagmouseOver = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (flagmouseOver) {
+				System.out.println(" MouserOver Action is performed on ");
+			} else {
+				System.out.println("MouseOver action is not performed on");
+			}
+		}
+	}
+	
+	
+	public boolean moveToElement(WebDriver driver, WebElement element) {
+		boolean flagmoveToElement = false;
+		try {
+			// WebElement element = driver.findElement(locator);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].scrollIntoView(true);", element);
+			Actions actions = new Actions(driver);
+			// actions.moveToElement(driver.findElement(locator)).build().perform();
+			actions.moveToElement(element).build().perform();
+			flagmoveToElement = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flagmoveToElement;
+	}
+
+	
+	
+	public boolean mouseover(WebDriver driver, WebElement element) {
+		boolean flagmouseover = false;
+		try {
+			new Actions(driver).moveToElement(element).build().perform();
+			flagmouseover = true;
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			/*
+			 * if (flag) {
+			 * SuccessReport("MouseOver ","MouserOver Action is performed on \""+locatorName
+			 * +"\""); } else {
+			 * failureReport("MouseOver","MouseOver action is not performed on \""
+			 * +locatorName+"\""); }
+			 */
+		}
+	}
+	
+	
+	
+	
+	public boolean mouseDraggble(WebDriver driver, WebElement element, int x, int y) {
+		boolean flagDrag = false;
+		try {
+			new Actions(driver).dragAndDropBy(element, x, y).build().perform();
+			Thread.sleep(5000);
+			flagDrag =  true;
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			if(flagDrag) {
+				System.out.println("Frame with index \"" + element + "\" is performed");
+			} else {
+				System.out.println("Frame with index \"" + element + "\" is not performed");
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	public boolean draganddrop(WebDriver driver, WebElement element, WebElement target) {
+		boolean flagDragAndDrop = false;
+		
+		try {
+			new Actions(driver).dragAndDrop(element, target).build().perform();
+			Thread.sleep(5000);
+			flagDragAndDrop = true;
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			if(flagDragAndDrop) {
+				System.out.println("Drag & Drop is performed");
+			} else {
+				System.out.println("Drag & Drop is not performed");
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	public boolean rightclick(WebDriver driver,WebElement element) {
+		boolean flagrightclick = false;
+		try {
+			Actions clicker = new Actions(driver);
+
+            clicker.contextClick(element).build().perform();
+			flagrightclick = true;
+			return true;
+			// driver.findElement(by1).sendKeys(Keys.DOWN);
+		} catch (Exception e) {
+
+			return false;
+		} finally {
+			if (flagrightclick) {
+				System.out.println("RightClick Action is performed");
+			} else {
+				System.out.println("RightClick Action is not performed");
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	public boolean switchWindowHandles(WebDriver driver, String windowTitle, int count) {
+		boolean flagwindowHandle = false;
+	
+	try {
+		Set<String> windowList = driver.getWindowHandles();
+		
+			String [] array = windowList.toArray(new String[0]);
+			
+			driver.switchTo().window(array[count-1]);
+		
+			if (driver.getTitle().contains(windowTitle)) {
+				flagwindowHandle = true;
+			} else {
+				flagwindowHandle = false;
+			}
+		return flagwindowHandle;
+	} catch (Exception e) {
+			return false;
+	} finally {
+			 
+			if(flagwindowHandle) {
+			System.out.println("Navigated to the window with title");
+			} else {
+				System.out.println("The Window with title is not Selected");
+		}
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
