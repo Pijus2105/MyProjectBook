@@ -1,5 +1,6 @@
 package com.issuewire.actiondriver;
 
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -583,9 +584,56 @@ public class Action extends MainClass implements ActionInterface  {
 	
 	
 	
+	public boolean childWindow(WebDriver driver) {
+		boolean flagChildWindow = false;
+		
+		
+		try {
+			
+			Set<String> childWindow = driver.getWindowHandles();
+			
+			Object popup[] = childWindow.toArray();
+			
+			driver.switchTo().window(popup[0].toString());
+			
+			flagChildWindow = true;
+			return flagChildWindow;
+		} catch (Exception e) {
+			flagChildWindow = false;
+			return flagChildWindow;
+		} finally {
+			if(flagChildWindow) {
+				System.out.println("Focus navigated to the window with title");
+			} else {
+				System.out.println("The Window with title: is not Selected");
+			}
+				
+		}
+			
+	}
 	
 	
 	
 	
 	
+	
+	
+	public int getColoumnCount(WebElement coloumn) {
+		
+		//This Will Be Make List Of All Elements
+		List<WebElement> coloumns = coloumn.findElements(By.tagName("td")); 
+		
+		//Get Size
+		int num = coloumns.size();
+		System.out.println("Total Column" + num);
+		
+		//Iterate All Elements
+		for(WebElement element : coloumns) {
+			
+			System.out.println("Name Of Coloumns" + element.getText());
+			System.out.print("|");
+		}
+		 return num;
+		
+	}
 }
