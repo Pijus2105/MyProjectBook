@@ -306,6 +306,13 @@ public class Action extends MainClass implements ActionInterface  {
 		}
 		return flag;
 	}
+	
+	
+	
+	
+	
+	
+	
 	public boolean switchToFrameByIndex(WebDriver driver,int index) {
 		boolean flag = false;
 		try {
@@ -329,6 +336,79 @@ public class Action extends MainClass implements ActionInterface  {
 	 * This method switch the to frame using frame ID.
 	 * 
 	 * @param idValue : Frame ID wish to switch
+	 * @return 
 	 * 
 	 */
+	
+	
+	
+	
+	
+	
+	public boolean switchByFrameId(WebDriver driver, String frameId) {
+		boolean flagFrameId =  false;
+		
+		try {
+			driver.switchTo().frame(frameId);
+			flagFrameId = true;
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			if(flagFrameId) {
+				System.out.println("Frame with index \"" + frameId + "\" is selected");
+			} else {
+				System.out.println("Frame with index \"" + frameId + "\" is not selected");
+			}
+		}
+		
+		
+	}
+	
+	/**
+	 * This method switch the to frame using frame Name.
+	 * 
+	 * @param nameValue : Frame Name wish to switch
+	 * @return 
+	 * 
+	 */
+	
+	
+	public boolean switchByFramename(WebDriver driver, String frameName) {
+		boolean flagFrameName = false;
+		
+		try {
+			driver.switchTo().frame(frameName);
+			flagFrameName = true;
+			return true;
+		} catch (Exception e) {
+			return false;
+		}finally {
+			if(flagFrameName) {
+				System.out.println("Frame with index \"" + frameName + "\" is selected");
+			}else {
+				System.out.println("Frame with index \"" + frameName + "\" is selected");
+			}
+		}
+		
+	}
+	
+	
+	public boolean switchByDefaultFrame(WebDriver driver) {
+		boolean flagFrameDefault = false;
+		
+		try {
+			driver.switchTo().defaultContent();
+			flagFrameDefault = true;
+			return true;
+		}catch(Exception e) {
+			return false;
+		}finally {
+			if(flagFrameDefault) {
+				System.out.println("Default Frame is selected");
+			}else {
+				System.out.println("Default Frame is not selected");
+			}
+		}
+	}
 }
