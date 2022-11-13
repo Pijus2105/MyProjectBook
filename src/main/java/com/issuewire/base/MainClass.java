@@ -1,5 +1,11 @@
+/**
+ * 
+ */
 package com.issuewire.base;
-
+/**
+ * @author PIJUS GHOSH
+ *
+ */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
