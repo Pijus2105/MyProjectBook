@@ -29,7 +29,6 @@ public class FrontPage extends MainClass {
 	
 	//Submit Button
 	//TC-004 (Verify the submit press release is Clickable)
-
 	@FindBy(xpath = ("//span[@id='btn-start']"))
 	WebElement SubmitPR;
 	
@@ -62,29 +61,31 @@ public class FrontPage extends MainClass {
 	WebElement GSPC;
 	
 	//Get Our Story Button
-	//TC_014(Verify get your story noticed button is clickable)
-	By getOurStory = By.xpath("//a[@title='Get Your Story']");
+	//TC_014(Verify get your story noticed button is clickable)	
+	@FindBy(xpath =("//a[@title='Get Your Story']"))
+	WebElement getOurStory;
 	
 	
 	//Guaranteed News Distribution with Media Coverage
-	//TC_016 (Verify Guaranteed News Distribution with Media Coverage)
-	By Text = By.xpath("//div[@class='media-text-wrapper clearfix']");
-	
+	//TC_016 (Verify Guaranteed News Distribution with Media Coverage)	
+	@FindBy(xpath = ("//div[@class='media-text-wrapper clearfix']"))
+	WebElement GuaranteedNewsDistribution;
 	
 	
 	//TC_018(Verify the distribution company images are iterate)
-	By PRlist = By.xpath("//div[@id='dist-img-div']");
-	
+	@FindBy(xpath=("//div[@id='dist-img-div']"))
+	WebElement PRList;
 	
 	//TC_019 (Verify the "Getting Published on Our Sites" at the left side)
-	By PubliSHsITES = By.xpath("//div[@class='h2']");
-	
+	@FindBy(xpath=("//div[@class='h2']"))
+	WebElement PubliSHsITES;
 	
 	
 	
 	//View Brands (Getting Published on Our Sites)
 	//TC_022(Verify the "Getting Published on Our Sites" of view more brans is clickable)
-	By viewBrandsB = By.xpath("//div[@class='col-md-12 distri']//div[@class='w3-right pull-right']");
+	@FindBy(xpath =("//div[@class='col-md-12 distri']//div[@class='w3-right pull-right']"))
+	WebElement viewBrandsB;
 	
 	//TC_023 & TC_027
 	
@@ -92,19 +93,17 @@ public class FrontPage extends MainClass {
 	
 	//Get Started Now
 	//TC_033 (Verify the get started now button is clickable)
-	By getStartedNow = By.xpath("//a[@title='Get started now']");
-	
+	@FindBy(xpath=("//a[@title='Get started now']"))
+	WebElement getStartedNow;
 	
 	
 	//Depends upon the policies of the recipient sites and Google News
 	//TC_028 (Verify at the right side "Depends upon the policies of the recipient sites and Google News" 	and mandatory symbols)
-	By mandatorySymbolText = By.xpath("//p[contains(text(),'* Depends upon the policies of the recipient sites')]");
+	@FindBy(xpath=("//p[contains(text(),'* Depends upon the policies of the recipient sites')]"))
+	WebElement mandatorySymbolText;
 	
-	
-	
-	
-	
-	
+		
+		
 	
 	
 	public FrontPage () {
@@ -151,4 +150,31 @@ public class FrontPage extends MainClass {
 		return Action.isDisplayed(getDriver(), GSPC);
 	}
 	
+	public void GetOurS() {
+		Action.clicks(getDriver(), getOurStory);
+	}
+	
+	public boolean GuaranteedNews() {
+		return Action.isDisplayed(getDriver(), GuaranteedNewsDistribution);
+	}
+	
+	public boolean PrL() {
+		return Action.isDisplayed(getDriver(), PRList);
+	}
+	
+	public boolean PublicSHsITES() {
+		return Action.isDisplayed(getDriver(), PubliSHsITES);
+	}
+	
+	public boolean viewBrands() {
+		return Action.isDisplayed(getDriver(), viewBrandsB);
+	}
+	
+	public boolean getStartedNow() {
+	    return Action.isDisplayed(getDriver(), getStartedNow);
+	}
+	
+	public boolean mandatorySymbolText() {
+		return Action.isDisplayed(getDriver(), mandatorySymbolText);
+	}
 }
