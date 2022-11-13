@@ -4,45 +4,62 @@
 package com.issuewire.pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.issuewire.actiondriver.Action;
+import com.issuewire.base.MainClass;
 
 /**
  * @author PIJUS GHOSH
  *
  */
-public class FrontPage {
+public class FrontPage extends MainClass {
+	
+	WebDriver driver;
+	
 	
 	//IssueWire Logo
-	//TC-001 (Verify the issuewire image text logo is right side and clickable)
-	By Logo = By.xpath("//a[@class='navbar-brand']");
+	//TC-001 (Verify the issuewire image text logo is right side and clickable)	
+	@FindBy(xpath = ("//a[@class='navbar-brand']"))
+	WebElement Logo;
 	
 	
 	//Submit Button
 	//TC-004 (Verify the submit press release is Clickable)
-	By submitPR = By.xpath("//span[@id='btn-start']");
+
+	@FindBy(xpath = ("//span[@id='btn-start']"))
+	WebElement SubmitPR;
 	
+	//TC_006(Verify on the front page shown that only 3 Press Release Distribution Service)	
+	@FindBy(xpath = ("//div[@class='col-md-12 text-center mid-txt2']"))
+	WebElement ThreePRdis;
 	
-	
-	//TC_006(Verify on the front page shown that only 3 Press Release Distribution Service)
-	By PRdistribution = By.xpath("//div[@class='col-md-12 text-center mid-txt2']");
 	
 	
 	//TC_007 (Verify TRADITIONAL NEWSROOM at the right side middle side 	PR DISTRIBUTION & left side PRESS RELEASE PACKAGE)
-	By PRpackage = By.xpath("//body[1]/div[2]/div[1]/div[2]");
+	@FindBy(xpath = ("//body[1]/div[2]/div[1]/div[2]"))
+	WebElement PRpackage;
+	
+	
+	
 		
 	//View Brands Button
-	//TC__008 (Verify after click the view more brands another tab is open)
-	By viewBrands = By.xpath("//div[@class='col-md-4 col-sm-4']//div[@class='w3-right pull-right']");
-	
+	//TC__008 (Verify after click the view more brands another tab is open)		
+	@FindBy(xpath = ("//div[@class='col-md-4 col-sm-4']//div[@class='w3-right pull-right']"))
+	WebElement ViewMoreBrands;
 	
 	
 	//TC_009(Verify Press Release Distribution Sites)
-	By PRdidtSites =By.xpath("//div[@class='w3-left']");
-	
-	
+	@FindBy(xpath = ("//div[@class='w3-left']"))
+	WebElement PRdistributionSites;
 	
 	//Text
 	//TC_012 (Verify that the middle side "GET GUARANTEED PR DISTRIBUTION, 	SYNDICATION, PROMOTION, AND COVERAGE" and text also)
-	By Textr = By.xpath("//div[@class='col-md-10 col-md-offset-1']");
+	@FindBy(xpath = ("//div[@class='col-md-10 col-md-offset-1']"))
+	WebElement GSPC;
 	
 	//Get Our Story Button
 	//TC_014(Verify get your story noticed button is clickable)
@@ -86,5 +103,52 @@ public class FrontPage {
 	
 	
 	
-
+	
+	
+	
+	
+	public FrontPage () {
+		
+		PageFactory.initElements(getDriver(), this);
+	}
+	
+	
+	
+	
+	public boolean IssueWireLogo() throws Throwable {
+	
+		return Action.isDisplayed(getDriver(), Logo);
+		
+	}
+	
+	public signUp submitPRelease() {
+		Action.Explicitwait(driver, SubmitPR, 10);
+		Action.clicks(getDriver(), SubmitPR);
+		return new signUp();
+	}
+	
+	public boolean PRdistThree() {
+	   return Action.isDisplayed(getDriver(), ThreePRdis);
+	}
+	
+	
+	
+	public boolean PRpacka() {
+		return Action.isDisplayed(getDriver(), PRpackage);
+	}
+	
+	public pressReleaseDistributionSiteList viewMore() {
+		Action.clicks(getDriver(), ViewMoreBrands);
+		Action.childWindow(getDriver(), ViewMoreBrands);
+		return new pressReleaseDistributionSiteList();
+	}
+	
+	public boolean PRdistributionSites() {
+		return Action.isDisplayed(getDriver(), PRdistributionSites);
+	}
+	
+	public boolean textGSPC() {
+		return Action.isDisplayed(getDriver(), GSPC);
+	}
+	
 }

@@ -18,4 +18,24 @@ public interface ActionInterface {
 	public void click(WebDriver driver, WebElement element);
 	public boolean findElement(WebDriver driver, WebElement element);
 	public boolean isSelected(WebDriver driver, WebElement element);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

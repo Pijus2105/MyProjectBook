@@ -25,7 +25,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class MainClass {
 
 	Properties prop;
-	WebDriver driver;
+	private WebDriver driver;
 	WebElement element;
 	
 	//Method For Pull The Configuration File
@@ -65,14 +65,14 @@ public class MainClass {
 		
 		
 		if(browserName.contains("chrome")) {
-			driver = new ChromeDriver();
+			setDriver(new ChromeDriver());
 			
 			
 		} else if (browserName.contains("Firefox")){
-			driver = new FirefoxDriver();
+			setDriver(new FirefoxDriver());
 			
 		} else if (browserName.contains("Internet Explorer")){
-			driver = new InternetExplorerDriver();
+			setDriver(new InternetExplorerDriver());
 		}
 		
 //		driver.manage().window().fullscreen();
@@ -86,6 +86,14 @@ public class MainClass {
 		
 		
 		
+	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
 	}
 
 

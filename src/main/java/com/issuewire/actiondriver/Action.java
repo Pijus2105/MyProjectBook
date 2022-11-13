@@ -52,7 +52,7 @@ public class Action extends MainClass implements ActionInterface  {
 
 
    //This Method For Click
-	public void click(WebDriver driver, WebElement element) {
+	public static void clicks(WebDriver driver, WebElement element) {
 		
 		Actions act = new Actions(driver);
 		act.build().perform();
@@ -60,7 +60,7 @@ public class Action extends MainClass implements ActionInterface  {
 	
 
 	//This Method For Find Element
-	public boolean findElement(WebDriver driver, WebElement element) {
+	public static boolean findElements(WebDriver driver, WebElement element) {
 		boolean flag = true;
 		
 		try {
@@ -79,6 +79,27 @@ public class Action extends MainClass implements ActionInterface  {
 		}
 		return flag;
 		}
+	
+	
+	//This Method For Image Displayed Or Not
+	public static boolean isDisplayed(WebDriver driver, WebElement ele) {
+		boolean flag = false;
+		flag = findElements(driver, ele);
+		if (flag) {
+			flag = ele.isDisplayed();
+			if (flag) {
+				System.out.println("The element is Displayed");
+			} else {
+				System.out.println("The element is not Displayed");
+			}
+		} else {
+			System.out.println("Not displayed ");
+		}
+		return flag;
+	}
+	
+	
+	
 		
 	//This Method For is Selected
 	public boolean isSelected(WebDriver driver, WebElement element) {
@@ -605,7 +626,7 @@ public class Action extends MainClass implements ActionInterface  {
 	
 	
 	
-	public boolean childWindow(WebDriver driver) {
+	public static boolean childWindow(WebDriver driver, WebElement element) {
 		boolean flagChildWindow = false;
 		
 		
@@ -632,6 +653,40 @@ public class Action extends MainClass implements ActionInterface  {
 		}
 			
 	}
+	
+	
+	
+	
+	
+	
+	public boolean switchToOldWindow(WebDriver driver) {
+		boolean flag = false;
+		try {
+
+			Set<String> s=driver.getWindowHandles();
+			Object popup[]=s.toArray();
+			driver.switchTo().window(popup[0].toString());
+			flag = true;
+			return flag;
+		} catch (Exception e) {
+			flag = false;
+			return flag;
+		} finally {
+			if (flag) {
+				System.out.println("Focus navigated to the window with title");			
+			} else {
+				System.out.println("The Window with title: is not Selected");
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -823,7 +878,7 @@ public class Action extends MainClass implements ActionInterface  {
 	
 	
 	
-	public void Explicitwait(WebDriver driver, WebElement element,  int timeout) {
+	public static void Explicitwait(WebDriver driver, WebElement element,  int timeout) {
 		WebDriverWait wait = new WebDriverWait (driver, timeout);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
@@ -873,4 +928,115 @@ public class Action extends MainClass implements ActionInterface  {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
+
+
+	public void click(WebDriver driver, WebElement element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public boolean findElement(WebDriver driver, WebElement element) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
